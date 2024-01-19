@@ -12,3 +12,66 @@ output:
 # Q2 : Proje Amacı
 
 https://www.kaggle.com/datasets/kushleshkumar/cornell-car-rental-dataset/data) adli Kaggle veri setini kullanarak iş problemini *dataset içerisindeki araç tipi modeli yakıt tipi yaşı gibi özellikleri değerlendirmek* ve **bu data setten çıkan tabloları/grafikleri/istatistikleri olarak yorumlama** yaparak çözmeyi amaçlıyoruz. Bu sayede problemi azaltmayı / yok etmeyi ya da kar arttırımına katkıda bulunmayı planlıyoruz. 
+
+
+# Q3 : Veri seti keşifsel analizi
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Veri dosyasını internetten indir ve git repo'sunun içine commitle
+filename <- "CarRentalData.csv"
+
+# Dosyayi ithal et
+library(readr)
+myDF <- read_csv(filename)
+```
+
+Veri seti Kaggle web sitesinden indirilmiştir ve **readr::read_csv()** fonksiyonu kullanılmıştır Veri boyutları aşağıdaki gibidir :
+
+- Satir sayisi : `r nrow(myDF)`
+- Satir sayisi : `r ncol(myDF)`
+
+
+Histogramlarda araçların yapım yılları, derecelendirmeleri ve yorum sayıları bulunuyor.
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+hist(myDF$vehicle.year, breaks = 10)
+hist(myDF$rating, breaks = 10)
+hist(myDF$reviewCount, breaks = 10)
+```
+
+Yorum sayısı 150'den büyük olanlar filtrelenmiştir.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+filtered_data <- subset(myDF, `reviewCount` > 150) 
+filtered_data
+```
+2015 sonrasında üretilen araçlar filtrelenmiştir
+
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+filtered_data <- subset(myDF, `vehicle.year` > 2015) 
+filtered_data
+```
+
+ARAÇLARIN YAKIT TÜKETİM TÜRLERİ
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+veri <- read.csv("C:/Users/90537/Desktop/210401039/CarRentalData.csv")
+
+# "fuelType" sütununu seç
+fuelType_sutunu <- veri$fuelType
+# "fuelType" sütununun frekans tablosunu oluştur
+frekans_tablosu <- table(fuelType_sutunu)
+
+# Pasta grafiğini çiz
+pie(frekans_tablosu, main = "Araç Fuel Type Dağılımı", col = rainbow(length(frekans_tablosu)))
+
+# hangi araç çeşidi ve hangi yıllarda üretilen araç çeşitleri yoğunlukla kullanılır onu görüyoruz
+```
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE,results='hide'}
+
+source("Q3_tests_miray_mutlu_210401039.R")
+
+```
