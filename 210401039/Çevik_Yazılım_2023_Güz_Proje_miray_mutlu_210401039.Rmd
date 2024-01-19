@@ -1,0 +1,10 @@
+---
+title: "Proje Rapor : Miray Mutlu 210401039"
+output:
+  html_document:
+    df_print: paged
+---
+
+# Q1 : Problem tanımı:
+
+Şirketimiz **Howling Fjord LTD ŞTİ AŞ**. Problemimiz *araç kiralama sektöründe faaliyet göstermek isteyenlerin kaç yaşında hangi yakıt kullanan araçlar tercih etmeleri gerektiğini buluyoruz*. 
