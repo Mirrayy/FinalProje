@@ -56,7 +56,7 @@ filtered_data
 ARAÇLARIN YAKIT TÜKETİM TÜRLERİ
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-veri <- read.csv("C:/Users/90537/Desktop/210401039/CarRentalData.csv")
+veri <- read.csv("C:/Users/90537/Desktop/210401039/FinalProje/210401039/CarRentalData.csv")
 
 # "fuelType" sütununu seç
 fuelType_sutunu <- veri$fuelType
@@ -108,3 +108,116 @@ selected_data
 source("Q4_tests_miray_mutlu_210401039.R")
 
 ```
+
+
+
+
+# Q5 : Veri Mühendisliği
+
+Filtrelerden geçip oluşan sentetik verimizin yakıt türü grafiği:
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Örnek veri oluştur
+veri <- c("gasoline", "hybrid", "electric", "gasoline", "electric", "electric", "electric", "electric", "electric", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline")
+
+# table() fonksiyonu ile tablo oluştur
+frekans_tablosu <- table(veri)
+
+# Oluşturulan tabloyu görüntüle
+print(frekans_tablosu)
+
+# Tabloyu bar plot olarak çiz
+barplot(frekans_tablosu, main = "Yakıt Türleri Dağılımı", xlab = "yakıt türü", ylab = "miktar", col = "blue")
+
+```
+
+Tablonun pasta grafiğinde gösterimi:
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Veriyi oluştur
+veri <- c("gasoline", "hybrid", "electric", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "electric", "electric", "electric", "electric", "electric", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline", "gasoline")
+
+# Faktörleri oluştur
+faktor_veri <- as.factor(veri)
+
+# Faktörlerin frekanslarını hesapla
+frekanslar <- table(faktor_veri)
+
+# Faktör seviyelerine özel renkleri belirle
+renkler <- c("green", "blue", "purple")
+
+# Pasta grafiğini çiz
+pie(frekanslar, labels = frekanslar, main = "Yakıt Türleri Dağılımı", col = renkler)
+
+```
+
+Eyalet/Memnuniyet tablosu:
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Örnek veri oluştur
+veri <- c("CA", "CA", "CA", "CA", "CA", "CA", "CA", "CA", "CA", "CA", "CA", "CA", "CA", "CA", "CA", "GA", "TN", "TN", "TX", "TX", "TX", "TX", "TX", "TX", "TX", "TX", "TX", "TX", "CO", "NJ", "NJ", "MI", "FL", "FL", "FL", "FL", "FL", "IL", "NV", "NV", "NV", "NV", "NV", "NV", "NV", "NV", "HI", "OR", "OR", "LA", "AZ", "AZ")
+
+# table() fonksiyonu ile tablo oluştur
+frekans_tablosu <- table(veri)
+
+# Oluşturulan tabloyu görüntüle
+print(frekans_tablosu)
+
+
+# Tabloyu bar plot olarak çiz
+barplot(frekans_tablosu, main = "Eyalet/Memnuniyet", xlab = "EYALETLER", ylab = "memnun kalınan miktar", col = "purple")
+```
+
+
+
+
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Örnek veri oluştur
+veri <- c("suv", "suv", "car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car","car")
+
+# table() fonksiyonu ile tablo oluştur
+frekans_tablosu <- table(veri)
+
+# Oluşturulan tabloyu görüntüle
+print(frekans_tablosu)
+
+# Tabloyu bar plot olarak çiz
+barplot(frekans_tablosu, main = "Araç Türü", xlab = "araç türü", ylab = "miktar", col = "orange")
+```
+
+
+Kullanılan araçların çeşitlerinin grafiği:
+
+
+
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+
+selected_data <- myDF %>%
+   filter(vehicle.year > 2015) %>%
+    filter(reviewCount > 130) %>%
+    filter(rating > 4) %>%
+    select(vehicle.make,`vehicle.model`, `vehicle.type`, `fuelType`)
+selected_data
+```
+
+Kullanılan araçların bulundukları eyaletler ile olan tablosu:
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+selected_data <- myDF %>%
+   filter(vehicle.year > 2015) %>%
+    filter(reviewCount > 130) %>%
+    filter(rating > 4) %>%
+    select(location.state,`vehicle.type`, `fuelType`)
+selected_data
+```
+Nevada, California ve Texas'ta benzinli araçlardan çok memnun kalındığı için bu eyaletlerde benzinli araçlar ile araç kiralama dükkanı açılabilir. Ancak aynı şekilde, California'da elektrikli araç kiralanma miktarı da son yıllarda artış göstermekte olduğundan, açılacak araç kiralama dükkanı için elektrikli araçlar da tavsiye edilmektedir.
+
+Elektrikli araç markası olarak da kesinlikle Tesla tavsiye edilmektedir.
+
