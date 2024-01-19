@@ -221,3 +221,27 @@ Nevada, California ve Texas'ta benzinli araçlardan çok memnun kalındığı i�
 
 Elektrikli araç markası olarak da kesinlikle Tesla tavsiye edilmektedir.
 
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE,results='hide'}
+
+source("Q6_tests_miray_mutlu_210401039.R")
+
+
+```
+
+
+# Q7: Sonuç Değerlendirme ve Tavsiyeler
+
+Bu bölümde projenin genelinde yapılan operasyonlar, araç modellerinden yakıt tipine, araç yaşlarından araç derecelendirmelerine kadar değerlendirilmiş ve hangi eyaletlere hangi araçların alınması gerektiği gösterilmiştir.
+
+Güçlü yanı: İstenen eyalette hangi araçların daha çok beğenilip kullanıldığı belirtiliyor.
+
+Zayıf yanı: Veri setinin hemen hemen her yıl güncellenmesi gerekiyor, çünkü yakıt türleri için devrim niteliğinde olan elektrikli araçlar ortaya çıkıyor.
+
+İleride bu çalışmayı geliştirmek/devam ettirmek isteyenlere verilebilecek tavsiyeler:
+
+Bulunduğunuz yıla göre veri setini güncellemek.
+Elektrikli araçların önümüzdeki yıllarda daha karlı ve doğa dostu olmasından kaynaklı, elektrikli araçları öne çıkaran bir takım puan sistemi getirilebilir.
+
+
