@@ -75,3 +75,36 @@ pie(frekans_tablosu, main = "Araç Fuel Type Dağılımı", col = rainbow(length
 source("Q3_tests_miray_mutlu_210401039.R")
 
 ```
+
+# Q4 : Veri seti ön işlemesi
+Ön İşleme Raporu: 
+
+vehicle.model sütunu: Null değerleri silindi ve araç tipleri yazıldı.
+
+location.state Sütunu: null değerleri silindi ve eyaletler yazıldı.
+
+vehicle.type sütunu: null değerler silindi ve araçların yakıt türleri yazıldı.
+
+reviewCount sütunu: null değerler silindi ve sayıları yazıldı.
+
+Yaptığımız şemalara göre memnun kalınılan araçların yapım yılı 2015 sonrası olan, yorum sayısı 150 üstü olan ve rating'i 5 olan araçların yakıt tüketimi, model, tip, memnun kalınan eyalet ve yorum sayıları aşağıdadır.
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+
+selected_data <- myDF %>%
+   filter(vehicle.year > 2015) %>%
+    filter(reviewCount > 130) %>%
+    filter(rating > 4) %>%
+    select(vehicle.model,`location.state`,`vehicle.type`, `fuelType`, `reviewCount`)
+selected_data
+
+```
+
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE,results='hide'}
+source("Q4_tests_miray_mutlu_210401039.R")
+
+```
